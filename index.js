@@ -445,9 +445,16 @@ const generatePDF = async (name, roll, programme, branch, roomNo, hallNo, purpos
         color: rgb(0, 0, 0),
     });
 
-    const uri = await pdfDoc.saveAsBase64({ dataUri: true });
+    const pdfBytes = await pdfDoc.save();
 
-    saveAs(uri, "SBF Loan Application.pdf", { autoBom: true })
+    var file = new File(
+    [pdfBytes],
+    "SBF Loan Form.pdf",
+    {
+      type: "application/pdf;charset=utf-8",
+    }
+  );
+ saveAs(file);
 
     // document.querySelector('#mypdf').src = uri
 
