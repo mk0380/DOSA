@@ -19,101 +19,101 @@
         <div class="text">
             SBF Loan Application Form
         </div>
-        <form action="#">
+        <form action="#" name="google-sheet">
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" id="studentInput">
+                    <input type="text" id="studentInput" name="Name">
                     <div class="underline"></div>
-                    <label id="studentName">Name of Student</label>
+                    <label id="studentName">Name Of Student</label>
                 </div>
                 <div class="input-data">
-                    <input type="number" id="rollInput">
+                    <input type="number" id="rollInput" name="Roll No">
                     <div class="underline"></div>
                     <label id="rollName">Roll No</label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" id="programmeInput">
+                    <input type="text" id="programmeInput" name="Programme">
                     <div class="underline"></div>
                     <label id="programmeName">Programme</label>
                 </div>
                 <div class="input-data">
-                    <input type="text" id="branchInput">
+                    <input type="text" id="branchInput" name="Branch">
                     <div class="underline"></div>
                     <label id="branchName">Branch</label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" id="roomNoInput">
+                    <input type="text" id="roomNoInput" name="Room No">
                     <div class="underline"></div>
                     <label id="roomNoName">Room No</label>
                 </div>
                 <div class="input-data">
-                    <input type="text" id="hallInput">
+                    <input type="text" id="hallInput" name="Hall No">
                     <div class="underline"></div>
-                    <label id="hallName">Hall of Residence No</label>
+                    <label id="hallName">Hall Of Residence No</label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="input-data">
-                    <input type="email" id="emailInput">
+                    <input type="email" id="emailInput" name="Email">
                     <div class="underline"></div>
                     <label id="emailName">Email Id</label>
                 </div>
                 <div class="input-data">
-                    <input type="email" id="altEmailInput">
+                    <input type="email" id="altEmailInput" name="Alternate Email">
                     <div class="underline"></div>
                     <label id="altEmailName">Alternate Email Id</label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" id="locAddInput">
+                    <input type="text" id="locAddInput" name="Local Address">
                     <div class="underline"></div>
                     <label id="locAddName">Local Address</label>
                 </div>
                 <div class="input-data">
-                    <input type="text" id="perAddInput">
+                    <input type="text" id="perAddInput" name="Permanent Address">
                     <div class="underline"></div>
                     <label id="perAddName">Permanent Address</label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="input-data">
-                    <input type="number" id="contactParInput">
+                    <input type="number" id="contactParInput" name="Contact Of Parents">
                     <div class="underline"></div>
                     <label id="contactParName">Contact No of Parents</label>
                 </div>
                 <div class="input-data">
-                    <input type="text" id="purposeInput">
+                    <input type="text" id="purposeInput" name="Purpose">
                     <div class="underline"></div>
                     <label id="purposeName">Purpose</label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" id="thesisInput">
+                    <input type="text" id="thesisInput" name="Thesis Guide">
                     <div class="underline"></div>
-                    <label id="thesisName">Recommended by (Thesis Guide)(for Masters students)</label>
+                    <label id="thesisName">Recommended By (Thesis Guide)(For Masters Students)</label>
                 </div>
                 <div class="input-data">
-                    <input type="text" id="date1Input">
+                    <input type="text" id="date1Input" name="Date(Thesis Guide)">
                     <div class="underline"></div>
-                    <label id="date1Name">Date (dd/mm/yyyy)</label>
+                    <label id="date1Name">Date (DD/MM/YYYY)</label>
                 </div>
             </div>
             <div class="form-row">
                 <div class="input-data">
-                    <input type="text" id="headInput">
+                    <input type="text" id="headInput" name="Head Of Department">
                     <div class="underline"></div>
-                    <label id="headName">Recommended by (Head of the Department)</label>
+                    <label id="headName">Recommended By (Head Of The Department)</label>
                 </div>
                 <div class="input-data">
-                    <input type="text" id="date2Input">
+                    <input type="text" id="date2Input" name="Date(Head Of Department)">
                     <div class="underline"></div>
-                    <label id="date2Name">Date (dd/mm/yyyy)</label>
+                    <label id="date2Name">Date (DD/MM/YYYY)</label>
                 </div>
             </div>
             <div class="form-row">
@@ -121,12 +121,23 @@
                 <div class="form-row submit-btn">
                     <div class="input-data" id="btn">
                         <div class="inner"></div>
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit" name="submit">
                     </div>
                 </div>
 
         </form>
     </div>
+                <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw4QsX4wLVoAQ1F9pdZa6tr9ar7g5URh9f0fqEdcdkilh_FrATyco2fLmOc0gaMzkob/exec'
+        const form = document.forms['google-sheet']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => alert("SBF Loan Form have been downloaded successfully"))
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
 </body>
 
 </html>
