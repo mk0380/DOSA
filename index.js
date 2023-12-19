@@ -480,6 +480,10 @@ const head = document.querySelector("#headInput")
 const date2 = document.querySelector("#date2Input")
 
 submitBtn.addEventListener('click', () => {
+    if(name.value.length==0 || roll.value.length==0 || roomNo.value.length==0 || email.value.length==0 || altEmail.value.length==0 || local.value.length==0 || permanent.value.length==0 || contact.value.length==0 || purpose.value.length==0){
+        alert("Please fill all the required details before submitting")
+        return
+    }
     generatePDF(name.value, roll.value, programme.value, branch.value, roomNo.value, hallNo.value, purpose.value, email.value, altEmail.value, contact.value, local.value, permanent.value, thesis.value, date1.value, head.value, date2.value)
 })
 
